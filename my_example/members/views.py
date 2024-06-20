@@ -21,7 +21,7 @@ def create_todo(request):
         forms = TodoForm()
 
     context = {"form": forms}
-    return render(request, "templates/create.html", context)
+    return render(request, "create.html", context)
 
 
 def edit_todo(request, pk):
@@ -37,7 +37,7 @@ def edit_todo(request, pk):
     else:
         todo = Todo.objects.get(id=pk)
         forms = TodoForm(instance=todo)
-    return render(request, "templates/edit.html", {"form": forms})
+    return render(request, "edit.html", {"form": forms})
 
 
 def complete(request, pk):
@@ -45,17 +45,17 @@ def complete(request, pk):
     todo.complete = True
     todo.save()
     context = {"todos": Todo.objects.all()}
-    return render(request, "templates/home.html", context)
+    return render(request, "home.html", context)
 
 
 def delete(request, pk):
     todo = Todo.objects.get(id=pk)
     todo.delete()
     context = {"todos": Todo.objects.all()}
-    return render(request, "templates/home.html", context)
+    return render(request, "home.html", context)
 
 
 def completed(request):
     todo = Todo.objects.all().filter(complete=True)
     context = {"todos": todo}
-    return render(request, "templates/completed.html", context)
+    return render(request, "completed.html", context)

@@ -6,7 +6,6 @@ from .models import Todo
 
 def home(request):
     context = {"todos": Todo.objects.all().order_by("-created_date")}
-    print(context)
     return render(request, "home.html", context)
 
 
@@ -15,7 +14,7 @@ def create_todo(request):
         forms = TodoForm(request.POST)
         if forms.is_valid():
             forms.save()
-            messages.success(request, "Your Todo is created!")
+            messages.success(request, "Амжилттай үүсгэлээ!")
             return redirect("home")
     else:
         forms = TodoForm()
@@ -32,7 +31,7 @@ def edit_todo(request, pk):
             todo.title = forms.instance.title
             todo.task_content = forms.instance.task_content
             todo.save()
-            messages.success(request, "Your Todo is Updated Successfully!")
+            messages.success(request, "Амжилттай шинэчиллээ!")
             return redirect("home")
     else:
         todo = Todo.objects.get(id=pk)

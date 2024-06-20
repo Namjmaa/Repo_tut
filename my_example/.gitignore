@@ -1,2 +1,4 @@
 example/
 .env
+*.pyc
+.DS_Store

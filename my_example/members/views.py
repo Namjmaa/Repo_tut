@@ -6,6 +6,7 @@ from .models import Todo
 
 def home(request):
     context = {"todos": Todo.objects.all().order_by("-created_date")}
+    print(context)
     return render(request, "home.html", context)
 
 

@@ -1,10 +1,12 @@
+from django.utils import timezone
 from django.db import models
 
-class Member(models.Model):
-    firstname = models.CharField(max_length=255)
-    lastname = models.CharField(max_length=255)
-    phone = models.IntegerField(null=True)
-    joined_date = models.DateField(null=True)
+# Create your models here.
+class Todo(models.Model):
+    title = models.CharField(max_length=100)
+    task_content = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    complete = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.firstname} {self.lastname}"
+        return self.title

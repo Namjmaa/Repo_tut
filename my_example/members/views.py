@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import TodoForm
+from .forms import NoteForm
 from .models import Todo
-
+from .models import Note
 
 def home(request):
     context = {"todos": Todo.objects.all().order_by("-created_date")}
@@ -58,3 +59,16 @@ def completed(request):
     todo = Todo.objects.all().filter(complete=True)
     context = {"todos": todo}
     return render(request, "completed.html", context)
+
+def note(request):
+    if request.method == "POST":
+        forms = NoteForm(request.POST)
+        if forms.is_valid():
+            forms.save()
+            messages.success(request, "Амжилттай үүсгэлээ!")
+            return redirect("notes")
+    else:
+        forms = NoteForm()
+
+    context = {"notes": Note.objects.all().order_by("-created_date"), "form": forms}
+    return render(request, "note.html", context)

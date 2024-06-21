@@ -27,4 +27,5 @@ urlpatterns = [
     path("complete/<int:pk>/", views.complete, name="complete"),
     path("delete/<int:pk>/", views.delete, name="delete"),
     path("completed/", views.completed, name="completed"),
+    path("notes/", views.note, name="notes"),
 ]

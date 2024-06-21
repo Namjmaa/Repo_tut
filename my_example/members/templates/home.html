@@ -4,7 +4,7 @@
 <div class="m-3 table-responsive">
     <table class="table table-bordered table-hover">
         <thead>
-            <tr>
+            <tr style='background-color:lightblue;'>
                 <th style="text-align:center; width:3%" scope="col">#</th>
                 <th style="text-align:center" scope="col">Гарчиг</th>
                 <th style="text-align:center" scope="col">Агуулга</th>
@@ -15,8 +15,8 @@
         </thead>
         <tbody>
             {% for todo in todos %}
-            <tr>
-                <th scope="row">{{ forloop.counter }}</th>
+            <tr >
+                <th scope="row" >{{ forloop.counter }}</th>
                 <td>{{ todo.title }}</td>
                 <td>{{ todo.task_content }}</td>
                 <td style="text-align:center">{{ todo.created_date|date:"d-m-y" }}</td>

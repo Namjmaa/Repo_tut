@@ -38,10 +38,32 @@
         {% endfor %}
         {% endif %}
     </div>
-        {% block content %}
-
-        {% endblock %}
-
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div class="col-lg-4">
+                <div class="col-md-4 float-right ">
+                    <div class="card my-4">
+                        <h5 class="card-header">About ToDo App</h5>
+                        <div class="card-body">
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam ipsum perferendis nostrum aut maxime cum ipsam dolorum, quidem quis! Impedit, hic explicabo. Consectetur provident illo dolore tempora consequuntur deserunt qui.</p>
+                            <a href="https://Aziyan99.github.io"
+                               class="btn btn-danger">Дэлгэрэнгүй!</a>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .card{
+            box-shadow: 0 16px 48px #E3E7EB;
+            width: 300px;
+        }
+    </style>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
             crossorigin="anonymous"></script>

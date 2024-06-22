@@ -5,6 +5,7 @@ from .forms import NoteForm
 from .models import Todo
 from .models import Note
 
+
 def home(request):
     context = {"todos": Todo.objects.all().order_by("-created_date")}
     return render(request, "home.html", context)
@@ -59,6 +60,7 @@ def completed(request):
     todo = Todo.objects.all().filter(complete=True)
     context = {"todos": todo}
     return render(request, "completed.html", context)
+
 
 def note(request):
     if request.method == "POST":

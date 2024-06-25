@@ -12,7 +12,13 @@ django = "^5.0.6"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.4.10"
+pytest = "^8.2.2"
+pytest-django = "^4.8.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "my_example.settings"
+python_files = "test*.py test_*.py *_tests.py"

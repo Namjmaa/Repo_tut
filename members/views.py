@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import TodoForm
 from .forms import NoteForm
+from .forms import CommentForm
 from .models import Todo
 from .models import Note
+from .models import Comment
 
 
 def home(request):
@@ -74,3 +76,18 @@ def note(request):
 
     context = {"notes": Note.objects.all().order_by("-created_date"), "form": forms}
     return render(request, "note.html", context)
+
+
+def new_comment(request):
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Амжилттай үүсгэлээ!")
+            return redirect("home")
+    else:
+        form = CommentForm()
+
+    comments = Comment.objects.all().order_by("-created_date")
+    context = {"form": form, "comments": comments}
+    return render(request, "new_comment.html", context)

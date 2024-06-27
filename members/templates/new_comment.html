@@ -1,0 +1,22 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Сэтгэгдэл:</h2>
+<form id="commentForm" hx-post="{% url 'new_comment' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Илгээх</button>
+</form>
+
+<div id="commentList">
+    {% for comment in comments %}
+        <div class="comment">
+            <small>Илгээсэн хугацаа: {{ comment.created_date }}</small>
+            <p>{{ comment.text }}</p>
+        </div>
+    {% empty %}
+        <p>No comments yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}

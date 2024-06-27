@@ -15,7 +15,7 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from members import views
 
 
@@ -28,4 +28,5 @@ urlpatterns = [
     path("delete/<int:pk>/", views.delete, name="delete"),
     path("completed/", views.completed, name="completed"),
     path("notes/", views.note, name="notes"),
+    path("comments/", include("members.urls")),
 ]

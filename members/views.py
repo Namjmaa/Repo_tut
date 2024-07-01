@@ -84,10 +84,14 @@ def new_comment(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Амжилттай үүсгэлээ!")
-            return redirect("home")
+            return redirect("comments")
     else:
         form = CommentForm()
-
-    comments = Comment.objects.all().order_by("-created_date")
-    context = {"form": form, "comments": comments}
+    context = {"form": form}
     return render(request, "new_comment.html", context)
+
+
+def show_comment(request):
+    comments = Comment.objects.all().order_by("-created_date")
+    context = {"comments": comments}
+    return render(request, "comments.html", context)

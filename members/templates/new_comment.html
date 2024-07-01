@@ -3,10 +3,12 @@
 
 {% block content %}
 <h2>Сэтгэгдэл:</h2>
-<form id="commentForm" hx-post="{% url 'new_comment' %}">
+<form id="commentForm" hx-post="{% url 'new_comment' %}" hx-target="#result">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Илгээх</button>
 </form>
-
+<div id="result">
+  
+</div>
 {% endblock %}
